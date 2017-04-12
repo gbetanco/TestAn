@@ -1,0 +1,10 @@
+# Basic provisioning example
+- ec2:
+    key_name: keypairfugue
+    instance_type: t2.micro
+    image: ami-22ce4934
+    wait: yes
+    group: Test Fugue Lima
+    count: 1
+    vpc_subnet_id: vpc-e91aa08c
+    assign_public_ip: yes
