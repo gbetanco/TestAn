@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-terminal  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-terminal
+  template:
+    metadata:
+      labels:
+        app: web-terminal
+    spec:
+      containers:
+      - name: web-terminal
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "Welcome to Azure Kubernetes Service (AKS)"
