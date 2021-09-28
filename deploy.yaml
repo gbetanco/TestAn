@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+name: aks-helloworld-one
+spec:
+replicas: 1
+selector:
+matchLabels:
+app: aks-helloworld-one
+template:
+metadata:
+labels:
+app: aks-helloworld-one
+spec:
+containers:
+- name: aks-helloworld-one
+image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
+ports:
+- containerPort: 80
+env:
+- name: TITLE
+value: "Welcome to Azure Kubernetes Service (AKS)"
+---
+apiVersion: v1
+kind: Service
+metadata:
+name: aks-helloworld-one
+spec:
+type: ClusterIP
+ports:
+- port: 80
+selector:
+app: aks-helloworld-one
+apiVersion: apps/v1 kind: Deployment me... de Santiago Obando Dordan
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+name: web-terminal
+spec:
+replicas: 1
+selector:
+matchLabels:
+app: web-terminal
+template:
+metadata:
+labels:
+app: web-terminal
+spec:
+containers:
+- name: web-terminal
+image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
+ports:
+- containerPort: 443
+env:
+- name: TITLE
+value: "Welcome to Azure Kubernetes Service (AKS)"
